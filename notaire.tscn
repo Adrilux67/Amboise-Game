@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://djxdtt3vjs136"]
+
+[ext_resource type="Script" path="res://Personnages/notaire/notaire.gd" id="1_kxcwa"]
+[ext_resource type="Script" path="res://Personnages/notaire/CorpsNotaire.gd" id="2_d0jrq"]
+[ext_resource type="SpriteFrames" uid="uid://pc6jys5kmskr" path="res://Personnages/notaire/notaireAnimation.tres" id="3_ac0mb"]
+[ext_resource type="LabelSettings" uid="uid://dnouf360rvrr0" path="res://InterfaceUtilisateur/Labels Settings/LabelSetting_CharacterLabel.tres" id="4_uj58c"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_00w7o"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ouexn"]
+radius = 50.0
+
+[node name="notaire" type="Area2D"]
+script = ExtResource("1_kxcwa")
+
+[node name="CorpsNPC" type="CharacterBody2D" parent="."]
+collision_layer = 4
+script = ExtResource("2_d0jrq")
+
+[node name="TimerAnimation" type="Timer" parent="CorpsNPC"]
+
+[node name="AnimationNPC" type="AnimatedSprite2D" parent="CorpsNPC"]
+sprite_frames = ExtResource("3_ac0mb")
+animation = &"walk"
+
+[node name="Hitbox" type="CollisionShape2D" parent="CorpsNPC"]
+position = Vector2(0, 6.5)
+shape = SubResource("CapsuleShape2D_00w7o")
+
+[node name="TimerCorrectionAnimation" type="Timer" parent="CorpsNPC"]
+
+[node name="Zone_Detection_Joueur" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ouexn")
+
+[node name="Nom" type="Label" parent="."]
+offset_left = -20.0
+offset_top = -41.0
+offset_right = 20.0
+offset_bottom = -18.0
+label_settings = ExtResource("4_uj58c")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TimerDetection" type="Timer" parent="."]
+wait_time = 0.2
+
+[connection signal="timeout" from="CorpsNPC/TimerAnimation" to="CorpsNPC" method="_on_timer_animation_timeout"]
+[connection signal="timeout" from="CorpsNPC/TimerCorrectionAnimation" to="CorpsNPC" method="_on_timer_correction_animation_timeout"]

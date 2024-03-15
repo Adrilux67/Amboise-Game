@@ -1,0 +1,221 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3 uid="uid://cshc1iyd6faw4"]
+
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueData.gd" id="1_nofcl"]
+
+[resource]
+script = ExtResource("1_nofcl")
+starts = {
+"Tavernier": &"0_1"
+}
+nodes = {
+"0_1": {
+"link": &"1_1",
+"offset": Vector2(200, 180),
+"start_id": "Tavernier"
+},
+"1_1": {
+"dialogue": "Bienvenue à la taverne du \"Dragon Doré\"",
+"offset": Vector2(420, 80),
+"options": {
+0: {
+"condition": {},
+"link": &"5_1",
+"text": "Boire 2 verres de vin"
+},
+1: {
+"condition": {},
+"link": &"5_2",
+"text": "Inviter le seigneur d'Amboise à sa table et parler de politique"
+},
+2: {
+"condition": {},
+"link": &"5_4",
+"text": "Jouer aux jeux de société"
+}
+},
+"size": Vector2(383.19, 392.094),
+"speaker": -1
+},
+"1_2": {
+"dialogue": "Le seigneur d'Amboise a apprécié la conversation. Le repas vous a couté 30 écus.",
+"offset": Vector2(2400, 400),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300.002, 276),
+"speaker": ""
+},
+"1_3": {
+"dialogue": "Vous avez payé 5 écus les 2 verres",
+"offset": Vector2(1980, -100),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300.002, 276),
+"speaker": ""
+},
+"1_4": {
+"dialogue": "Chapeau bas ! Vous êtes impressionnant aux échecs. Vous avez raflé la mise (20 écus). Votre victoire a captivé l'attention de tous.",
+"offset": Vector2(1760, 840),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 276),
+"speaker": ""
+},
+"1_5": {
+"dialogue": "Tu n'as pas assez d'argent",
+"offset": Vector2(1620, 500),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300.001, 276),
+"speaker": ""
+},
+"1_6": {
+"dialogue": "Vous n'avez pas assez d'argent",
+"offset": Vector2(1380, 160),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300.001, 276),
+"speaker": "Tavernier"
+},
+"1_7": {
+"dialogue": "Vous n'avez pas assez d'argent poour jouer",
+"offset": Vector2(400, 780),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 276),
+"speaker": "Tavernier"
+},
+"1_8": {
+"dialogue": "Vous avez perdu, quel dommage !",
+"offset": Vector2(1100, 960),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 276),
+"speaker": "Tavernier"
+},
+"4_1": {
+"link": &"4_2",
+"offset": Vector2(1620, 400),
+"type": 2,
+"value": "30",
+"variable": "richesse"
+},
+"4_2": {
+"link": &"1_2",
+"offset": Vector2(2000, 400),
+"type": 1,
+"value": "175",
+"variable": "prestige"
+},
+"4_3": {
+"link": &"1_3",
+"offset": Vector2(1372.27, 21.0379),
+"type": 2,
+"value": "5",
+"variable": "richesse"
+},
+"4_5": {
+"link": &"4_6",
+"offset": Vector2(1100, 640),
+"type": 1,
+"value": "10",
+"variable": "richesse"
+},
+"4_6": {
+"link": &"1_4",
+"offset": Vector2(1340, 840),
+"type": 1,
+"value": "50",
+"variable": "prestige"
+},
+"4_7": {
+"link": &"1_8",
+"offset": Vector2(760, 840),
+"type": 2,
+"value": "10",
+"variable": "richesse"
+},
+"5_1": {
+"false": &"1_6",
+"offset": Vector2(960, 220),
+"operator": 4,
+"true": &"4_3",
+"value1": "{{richesse}}",
+"value2": "5"
+},
+"5_2": {
+"false": &"1_5",
+"offset": Vector2(1160, 420),
+"operator": 4,
+"true": &"4_1",
+"value1": "{{richesse}}",
+"value2": "30"
+},
+"5_3": {
+"false": &"4_7",
+"offset": Vector2(740, 580),
+"operator": 0,
+"true": &"4_5",
+"value1": "{{chance}}",
+"value2": "true"
+},
+"5_4": {
+"false": &"1_7",
+"offset": Vector2(400, 580),
+"operator": 4,
+"true": &"5_3",
+"value1": "{{richesse}}",
+"value2": "10"
+}
+}
+variables = {
+"chance": {
+"type": 1,
+"value": false
+},
+"prestige": {
+"type": 2,
+"value": 100.0
+},
+"richesse": {
+"type": 2,
+"value": 30.0
+}
+}
+comments = Array[String]([])
+strays = Array[String]([])
+characters = ""
